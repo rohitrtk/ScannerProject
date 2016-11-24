@@ -2,15 +2,21 @@
 {
     internal class Student : Person
     {
-        public string FirstName { set; get; }
-        public string LastName { set; get; }
         public string ParentEmail { set; get; }
+        public bool Absent { set; get; }
 
-        public Student(string _lastName, string _firstName, int id, string _parentEmail) : base(id)
+        public Student(string lastName, string firstName, int id, string parentEmail) 
+            : base(lastName, firstName, id)
         {
-            LastName = _lastName;
-            FirstName = _firstName;
-            ParentEmail = _parentEmail;
+            ParentEmail = parentEmail;
+            Absent = false;
+        }
+
+        public Student(string lastName, string firstName, int id, string parentEmail, bool absent) 
+            : base(lastName, firstName, id)
+        {
+            ParentEmail = parentEmail;
+            Absent = absent;
         }
     }
 }

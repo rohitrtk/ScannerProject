@@ -1,16 +1,24 @@
 ﻿namespace ScannerProject
 {
+    /// <summary>
+    /// Each teacher will have a teacher class which stores the name, id and password
+    /// </summary>
     internal class Teacher : Person
     {
-        public string LastName { get; }
-        public string FirstName { get; }
         public string Password { get; }
 
-        public Teacher(string lastName, string firstName, int id, string password) : base(id)
+        private readonly CourseManager _courseManager; 
+
+        public Teacher(string lastName, string firstName, int id, string password) 
+            : base(lastName, firstName, id)
         {
-            LastName = lastName;
-            FirstName = firstName;
             Password = password;
+            _courseManager = new CourseManager();
+        }
+
+        public Course GetCourseAt(int period)
+        {
+            return _courseManager.ListOfCourses[period];
         }
     }
 }

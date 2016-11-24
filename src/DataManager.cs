@@ -6,6 +6,34 @@ namespace ScannerProject
 {
     internal class DataManager
     {
+        public static int[] findIndices(string fileName, string[] fields)
+        {
+            StreamReader reader = new StreamReader(fileName);
+            string rawData;
+            string[] header;
+            int[] indices = new int[fields.Length];
+
+            //get the file header
+            rawData = reader.ReadLine();//done in two steps for clarity
+            header = rawData.Split(',');//this contains the headers
+            for (int i = 0; i < header.Length; i++)
+            {
+                header[i] = header[i].ToUpper();//just to remove the possibility of problems due to case
+                for (int j = 0; j < fields.Length; j++)
+                {
+                    fields[j] = fields[j].ToUpper();
+                    if (header[i].Contains(fields[j]))
+                    {
+                        indices[j] = i;
+                    }
+                }
+            }
+            reader.Close();
+
+            return indices;
+        }
+
+
         public string[] ReadAllData(string fileName)
         {
             try

@@ -42,11 +42,11 @@ namespace ScannerProject
 
             if (currentTime.CompareTo(startTime) < 0 || currentTime.CompareTo(endTime) > 0) return;
 
-            if (startTime.Equals("08:10:00 AM")) Period = 1;
-            else if (startTime.Equals("09:27:00 AM")) Period = 2;
-            else if (startTime.Equals("10:44:00 AM")) Period = 3;
-            else if (startTime.Equals("12:00:00 PM")) Period = 4;
-            else if (startTime.Equals("01:17:00 PM")) Period = 5;
+            if (startTime.Equals("08:10:00 AM")) Period = 0;
+            else if (startTime.Equals("09:27:00 AM")) Period = 1;
+            else if (startTime.Equals("10:44:00 AM")) Period = 2;
+            else if (startTime.Equals("12:00:00 PM")) Period = 3;
+            else if (startTime.Equals("01:17:00 PM")) Period = 4;
             else Period = -1;
         }
 
