@@ -58,6 +58,7 @@
     <Compile Include="src\CourseManager.cs" />
     <Compile Include="src\DataManager.cs" />
     <Compile Include="src\Person.cs" />
+    <Compile Include="src\ScannerManager.cs" />
     <Compile Include="src\Student.cs" />
     <Compile Include="src\Teacher.cs" />
     <EmbeddedResource Include="Form1.resx">

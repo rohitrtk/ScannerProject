@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ScannerProject
 {
-    internal class DataManager
+    internal static partial class DataManager
     {
         public static int[] findIndices(string fileName, string[] fields)
         {
@@ -34,7 +34,7 @@ namespace ScannerProject
         }
 
 
-        public string[] ReadAllData(string fileName)
+        public static string[] ReadAllData(string fileName)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace ScannerProject
             }
         }
 
-        public void LoadAllData(string[] data, ListBox listBox)
+        public static void LoadAllData(string[] data, ListBox listBox)
         {
             var i = 0;
 
@@ -63,7 +63,7 @@ namespace ScannerProject
             }
         }
 
-        public void SaveAllData(string fileName, string[] data)
+        public static void SaveAllData(string fileName, string[] data)
         {
             var writer = new StreamWriter(fileName);
 
