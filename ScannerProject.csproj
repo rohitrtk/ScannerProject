@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8F139609-F800-4BAB-B15E-D0892A65A3C4}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ScannerProject</RootNamespace>
     <AssemblyName>ScannerProject</AssemblyName>
@@ -55,6 +55,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="f_CreateUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="f_CreateUserForm.Designer.cs">
+      <DependentUpon>f_CreateUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="f_LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="src\Teacher.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="f_CreateUserForm.resx">
+      <DependentUpon>f_CreateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="f_LoginForm.resx">
       <DependentUpon>f_LoginForm.cs</DependentUpon>

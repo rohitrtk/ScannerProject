@@ -18,3 +18,5 @@ E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.Form1.resourc
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.Properties.Resources.resources
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.csproj.GenerateResource.Cache
 D:\Visual Studio Projects\C#\ScannerProject\obj\Debug\ScannerProject.f_LoginForm.resources
+E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_LoginForm.resources
+E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_CreateUserForm.resources
