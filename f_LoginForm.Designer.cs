@@ -38,12 +38,13 @@
             // 
             // b_CreateUser
             // 
-            this.b_CreateUser.Location = new System.Drawing.Point(12, 225);
+            this.b_CreateUser.Location = new System.Drawing.Point(12, 95);
             this.b_CreateUser.Name = "b_CreateUser";
             this.b_CreateUser.Size = new System.Drawing.Size(277, 23);
             this.b_CreateUser.TabIndex = 0;
             this.b_CreateUser.Text = "Create New User";
             this.b_CreateUser.UseVisualStyleBackColor = true;
+            this.b_CreateUser.Click += new System.EventHandler(this.b_CreateUser_Click);
             // 
             // l_Login
             // 
@@ -85,12 +86,13 @@
             this.b_Submit.TabIndex = 5;
             this.b_Submit.Text = "Submit";
             this.b_Submit.UseVisualStyleBackColor = true;
+            this.b_Submit.Click += new System.EventHandler(this.b_Submit_Click);
             // 
             // f_LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 260);
+            this.ClientSize = new System.Drawing.Size(301, 128);
             this.Controls.Add(this.b_Submit);
             this.Controls.Add(this.t_Password);
             this.Controls.Add(this.t_Login);
@@ -98,7 +100,7 @@
             this.Controls.Add(this.l_Login);
             this.Controls.Add(this.b_CreateUser);
             this.Name = "f_LoginForm";
-            this.Text = "f_LoginForm";
+            this.Text = "Late Buster: Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 

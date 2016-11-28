@@ -17,20 +17,5 @@ namespace ScannerProject
         {
             l_Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
         }
-
-        private void b_SubmitInfo_Click(object sender, EventArgs e)
-        {
-            var login = textBox_TeacherLogin.Text;
-            var password = textBox_TeacherPassword.Text;
-
-            if (!(login.Equals(dev) && password.Equals(pass)))
-            {
-                MessageBox.Show("You have entered incorrect login information!\nPlease try again!", "Invalid Information!");
-                return;
-            }
-
-            textBox_TeacherLogin.Clear();
-            textBox_TeacherPassword.Clear();
-        }
     }
 }
