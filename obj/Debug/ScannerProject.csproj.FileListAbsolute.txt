@@ -20,3 +20,4 @@ E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.csproj.Genera
 D:\Visual Studio Projects\C#\ScannerProject\obj\Debug\ScannerProject.f_LoginForm.resources
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_LoginForm.resources
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_CreateUserForm.resources
+D:\Visual Studio Projects\C#\ScannerProject\obj\Debug\ScannerProject.f_CreateUserForm.resources

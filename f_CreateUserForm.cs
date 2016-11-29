@@ -27,6 +27,9 @@ namespace ScannerProject
         // String that holds the password generated from the generate password button
         private string _generatedPassword;
 
+        // Array of booleans that store if requred data is acquired 
+        private bool[] _dataBools;
+
 #endregion
 
         public f_CreateUserForm()
@@ -34,6 +37,12 @@ namespace ScannerProject
             InitializeComponent();
 
             _random = new Random();
+
+            _dataBools = new bool[9];
+            for (var i = 0; i < _dataBools.Length; i++)
+            {
+                _dataBools[i] = false;
+            }
         }
 
         private void b_GeneratePassword_Click(object sender, EventArgs e)
@@ -46,6 +55,14 @@ namespace ScannerProject
                 _generatedPassword += temp;
             }
             t_Password.Text = _generatedPassword;
+        }
+
+        private void b_Submit_Click(object sender, EventArgs e)
+        {
+            foreach (var b in _dataBools)
+            {
+                
+            }
         }
     }
 }

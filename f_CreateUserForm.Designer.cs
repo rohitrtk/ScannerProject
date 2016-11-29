@@ -48,6 +48,8 @@
             this.t_Password = new System.Windows.Forms.TextBox();
             this.b_GeneratePassword = new System.Windows.Forms.Button();
             this.b_Submit = new System.Windows.Forms.Button();
+            this.l_Email = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // l_FirstName
@@ -71,7 +73,7 @@
             // l_Period3
             // 
             this.l_Period3.AutoSize = true;
-            this.l_Period3.Location = new System.Drawing.Point(273, 67);
+            this.l_Period3.Location = new System.Drawing.Point(273, 135);
             this.l_Period3.Name = "l_Period3";
             this.l_Period3.Size = new System.Drawing.Size(46, 13);
             this.l_Period3.TabIndex = 2;
@@ -80,16 +82,16 @@
             // l_Period4
             // 
             this.l_Period4.AutoSize = true;
-            this.l_Period4.Location = new System.Drawing.Point(273, 93);
+            this.l_Period4.Location = new System.Drawing.Point(273, 161);
             this.l_Period4.Name = "l_Period4";
-            this.l_Period4.Size = new System.Drawing.Size(43, 13);
+            this.l_Period4.Size = new System.Drawing.Size(46, 13);
             this.l_Period4.TabIndex = 3;
-            this.l_Period4.Text = "Period4";
+            this.l_Period4.Text = "Period 4";
             // 
             // l_Period5
             // 
             this.l_Period5.AutoSize = true;
-            this.l_Period5.Location = new System.Drawing.Point(273, 119);
+            this.l_Period5.Location = new System.Drawing.Point(273, 187);
             this.l_Period5.Name = "l_Period5";
             this.l_Period5.Size = new System.Drawing.Size(46, 13);
             this.l_Period5.TabIndex = 4;
@@ -112,7 +114,7 @@
             // l_Period1
             // 
             this.l_Period1.AutoSize = true;
-            this.l_Period1.Location = new System.Drawing.Point(273, 15);
+            this.l_Period1.Location = new System.Drawing.Point(273, 83);
             this.l_Period1.Name = "l_Period1";
             this.l_Period1.Size = new System.Drawing.Size(46, 13);
             this.l_Period1.TabIndex = 7;
@@ -121,7 +123,7 @@
             // l_Period2
             // 
             this.l_Period2.AutoSize = true;
-            this.l_Period2.Location = new System.Drawing.Point(273, 41);
+            this.l_Period2.Location = new System.Drawing.Point(273, 109);
             this.l_Period2.Name = "l_Period2";
             this.l_Period2.Size = new System.Drawing.Size(46, 13);
             this.l_Period2.TabIndex = 8;
@@ -129,35 +131,35 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(325, 12);
+            this.textBox3.Location = new System.Drawing.Point(325, 80);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 9;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(325, 38);
+            this.textBox4.Location = new System.Drawing.Point(325, 106);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 10;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(325, 64);
+            this.textBox5.Location = new System.Drawing.Point(325, 132);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 11;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(325, 90);
+            this.textBox6.Location = new System.Drawing.Point(325, 158);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 12;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(325, 116);
+            this.textBox7.Location = new System.Drawing.Point(325, 184);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
             this.textBox7.TabIndex = 13;
@@ -181,7 +183,7 @@
             // l_Password
             // 
             this.l_Password.AutoSize = true;
-            this.l_Password.Location = new System.Drawing.Point(13, 166);
+            this.l_Password.Location = new System.Drawing.Point(13, 161);
             this.l_Password.Name = "l_Password";
             this.l_Password.Size = new System.Drawing.Size(53, 13);
             this.l_Password.TabIndex = 16;
@@ -189,14 +191,14 @@
             // 
             // t_Password
             // 
-            this.t_Password.Location = new System.Drawing.Point(16, 183);
+            this.t_Password.Location = new System.Drawing.Point(16, 178);
             this.t_Password.Name = "t_Password";
             this.t_Password.Size = new System.Drawing.Size(110, 20);
             this.t_Password.TabIndex = 17;
             // 
             // b_GeneratePassword
             // 
-            this.b_GeneratePassword.Location = new System.Drawing.Point(16, 210);
+            this.b_GeneratePassword.Location = new System.Drawing.Point(12, 206);
             this.b_GeneratePassword.Name = "b_GeneratePassword";
             this.b_GeneratePassword.Size = new System.Drawing.Size(110, 42);
             this.b_GeneratePassword.TabIndex = 18;
@@ -206,12 +208,29 @@
             // 
             // b_Submit
             // 
-            this.b_Submit.Location = new System.Drawing.Point(276, 180);
+            this.b_Submit.Location = new System.Drawing.Point(325, 236);
             this.b_Submit.Name = "b_Submit";
-            this.b_Submit.Size = new System.Drawing.Size(149, 72);
+            this.b_Submit.Size = new System.Drawing.Size(100, 42);
             this.b_Submit.TabIndex = 19;
             this.b_Submit.Text = "SUBMIT";
             this.b_Submit.UseVisualStyleBackColor = true;
+            this.b_Submit.Click += new System.EventHandler(this.b_Submit_Click);
+            // 
+            // l_Email
+            // 
+            this.l_Email.AutoSize = true;
+            this.l_Email.Location = new System.Drawing.Point(133, 15);
+            this.l_Email.Name = "l_Email";
+            this.l_Email.Size = new System.Drawing.Size(32, 13);
+            this.l_Email.TabIndex = 20;
+            this.l_Email.Text = "Email";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(136, 31);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(289, 20);
+            this.textBox8.TabIndex = 21;
             // 
             // f_CreateUserForm
             // 
@@ -219,6 +238,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(437, 290);
+            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.l_Email);
             this.Controls.Add(this.b_Submit);
             this.Controls.Add(this.b_GeneratePassword);
             this.Controls.Add(this.t_Password);
@@ -239,8 +260,9 @@
             this.Controls.Add(this.l_Period3);
             this.Controls.Add(this.l_LastName);
             this.Controls.Add(this.l_FirstName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "f_CreateUserForm";
-            this.Text = "f_CreateUserForm";
+            this.Text = "Late Buster: Create User";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +290,7 @@
         private System.Windows.Forms.TextBox t_Password;
         private System.Windows.Forms.Button b_GeneratePassword;
         private System.Windows.Forms.Button b_Submit;
+        private System.Windows.Forms.Label l_Email;
+        private System.Windows.Forms.TextBox textBox8;
     }
 }

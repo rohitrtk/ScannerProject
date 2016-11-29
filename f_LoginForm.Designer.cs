@@ -99,6 +99,7 @@
             this.Controls.Add(this.l_Password);
             this.Controls.Add(this.l_Login);
             this.Controls.Add(this.b_CreateUser);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "f_LoginForm";
             this.Text = "Late Buster: Login";
             this.ResumeLayout(false);

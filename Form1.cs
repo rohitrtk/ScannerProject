@@ -5,9 +5,6 @@ namespace ScannerProject
 {
     public partial class Form1 : Form
     {
-        private const string dev = "rohit_rtk@hotmail.com";
-        private const string pass = "1234";
-
         public Form1()
         {
             InitializeComponent();

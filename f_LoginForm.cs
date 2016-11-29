@@ -28,7 +28,7 @@ namespace ScannerProject
             InitializeComponent();
 
             // Read all the data from Logins.lbf and store them in string array
-            data = DataManager.ReadAllData("Logins.lbf");
+            data = DataManager.ReadAllData("Logins.lbs");
         }
 
         // Called when user clicks on the the submit button
