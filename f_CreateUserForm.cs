@@ -21,6 +21,9 @@ namespace ScannerProject
         // String that holds users password
         private string _password;
 
+        // String that holds email address of user
+        private string _email;
+
         // Array of strings that hold the course codes
         private string[] _courseCodes;
 
@@ -30,6 +33,10 @@ namespace ScannerProject
         // Array of booleans that store if requred data is acquired 
         private bool[] _dataBools;
 
+        // Message string
+        private const string _messageString = "1 or more peices of required information was missing\n" +
+                                        "Please make sure all required information was filled in!";
+
 #endregion
 
         public f_CreateUserForm()
@@ -37,6 +44,12 @@ namespace ScannerProject
             InitializeComponent();
 
             _random = new Random();
+
+            _courseCodes = new string[5];
+            for (var i = 0; i < _courseCodes.Length; i++)
+            {
+                _courseCodes[i] = "";
+            }
 
             _dataBools = new bool[9];
             for (var i = 0; i < _dataBools.Length; i++)
@@ -61,8 +74,34 @@ namespace ScannerProject
         {
             foreach (var b in _dataBools)
             {
-                
+                if (!string.IsNullOrWhiteSpace(t_Login.Text) && !string.IsNullOrWhiteSpace(t_Password.Text) &&
+                    !string.IsNullOrWhiteSpace(t_FirstName.Text) && !string.IsNullOrWhiteSpace(t_LastName.Text) &&
+                    !string.IsNullOrWhiteSpace(t_Period1.Text) && !string.IsNullOrWhiteSpace(t_Period2.Text) &&
+                    !string.IsNullOrWhiteSpace(t_Period3.Text) && !string.IsNullOrWhiteSpace(t_Period4.Text) &&
+                    !string.IsNullOrWhiteSpace(t_Period5.Text) && !string.IsNullOrWhiteSpace(t_Email.Text)) continue;
+
+                MessageBox.Show(_messageString);
+                break;
             }
+
+            _firstName = t_FirstName.Text;
+            _lastName = t_LastName.Text;
+            _username = t_Login.Text;
+            _password = t_Password.Text;
+            _email = t_Email.Text;
+            _courseCodes[0] = t_Period1.Text;
+            _courseCodes[1] = t_Period2.Text;
+            _courseCodes[2] = t_Period3.Text;
+            _courseCodes[3] = t_Period4.Text;
+            _courseCodes[4] = t_Period5.Text;
+
+            var str = _username + "," + _password + "," + _lastName + "," + _firstName;
+            foreach (var v in _courseCodes)
+            {
+                str += "," + v;
+            }
+        
+            DataManager.SaveAllData(DataManager.LoginFile, str);
         }
     }
 }

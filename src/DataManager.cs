@@ -6,6 +6,8 @@ namespace ScannerProject
 {
     internal static partial class DataManager
     {
+        public static string LoginFile { get; } = "Logins.lbs";
+
         public static int[] findIndices(string fileName, string[] fields)
         {
             StreamReader reader = new StreamReader(fileName);
@@ -63,9 +65,19 @@ namespace ScannerProject
             }
         }
 
+        public static void SaveAllData(string fileName, string data)
+        {
+            TextWriter writer = new StreamWriter(fileName, append:true);
+
+            writer.WriteLine("\n" + data);
+
+            writer.Close();
+        }
+
         public static void SaveAllData(string fileName, string[] data)
         {
-            var writer = new StreamWriter(fileName);
+            var writer = File.AppendText(fileName);
+            //var writer = new StreamWriter(fileName);
 
             foreach (var s in data)
             {
