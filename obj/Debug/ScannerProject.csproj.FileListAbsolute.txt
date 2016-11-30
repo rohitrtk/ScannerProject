@@ -14,10 +14,10 @@ E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.pdb
 E:\Computer Programming\C#\ScannerProject\bin\Debug\ScannerProject.exe
 E:\Computer Programming\C#\ScannerProject\bin\Debug\ScannerProject.pdb
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.csprojResolveAssemblyReference.cache
-E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.Form1.resources
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.Properties.Resources.resources
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.csproj.GenerateResource.Cache
 D:\Visual Studio Projects\C#\ScannerProject\obj\Debug\ScannerProject.f_LoginForm.resources
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_LoginForm.resources
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_CreateUserForm.resources
 D:\Visual Studio Projects\C#\ScannerProject\obj\Debug\ScannerProject.f_CreateUserForm.resources
+E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_MainForm.resources

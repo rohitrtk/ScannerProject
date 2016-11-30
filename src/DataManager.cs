@@ -4,10 +4,23 @@ using System.Windows.Forms;
 
 namespace ScannerProject
 {
+    /// <summary>
+    /// Static class, used for any/all data management methods
+    /// </summary>
     internal static partial class DataManager
     {
+        // Enum of periods throughout the day with their respective values
+        public enum Period { Period1 = 1, Period2, Period3, Period4, Period5, Break = 0, Spare = 0, Noperiod = -1 }
+
+        // String of the file location which is used to let people log in
         public static string LoginFile { get; } = "Logins.lbs";
 
+        /// <summary>
+        /// Rowbottoms method
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         public static int[] findIndices(string fileName, string[] fields)
         {
             StreamReader reader = new StreamReader(fileName);
@@ -35,7 +48,11 @@ namespace ScannerProject
             return indices;
         }
 
-
+        /// <summary>
+        /// Called when data is needed to be read from a file and stored in a string array
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static string[] ReadAllData(string fileName)
         {
             try
@@ -50,6 +67,11 @@ namespace ScannerProject
             }
         }
 
+        /// <summary>
+        /// Called when data is needed to be loaded into a list box
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="listBox"></param>
         public static void LoadAllData(string[] data, ListBox listBox)
         {
             var i = 0;
@@ -65,6 +87,11 @@ namespace ScannerProject
             }
         }
 
+        /// <summary>
+        /// Called when a string of data is needed to be appended to a new line in a file 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="data"></param>
         public static void SaveAllData(string fileName, string data)
         {
             TextWriter writer = new StreamWriter(fileName, append:true);
@@ -74,6 +101,11 @@ namespace ScannerProject
             writer.Close();
         }
 
+        /// <summary>
+        /// Called when a string array of data is needed to be written to a file, overwrites everything in the file!
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="data"></param>
         public static void SaveAllData(string fileName, string[] data)
         {
             var writer = File.AppendText(fileName);

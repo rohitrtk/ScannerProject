@@ -50,6 +50,7 @@
             this.b_Submit = new System.Windows.Forms.Button();
             this.l_Email = new System.Windows.Forms.Label();
             this.t_Email = new System.Windows.Forms.TextBox();
+            this.b_Login = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // l_FirstName
@@ -198,7 +199,7 @@
             // 
             // b_GeneratePassword
             // 
-            this.b_GeneratePassword.Location = new System.Drawing.Point(12, 206);
+            this.b_GeneratePassword.Location = new System.Drawing.Point(16, 208);
             this.b_GeneratePassword.Name = "b_GeneratePassword";
             this.b_GeneratePassword.Size = new System.Drawing.Size(110, 42);
             this.b_GeneratePassword.TabIndex = 18;
@@ -208,9 +209,9 @@
             // 
             // b_Submit
             // 
-            this.b_Submit.Location = new System.Drawing.Point(325, 236);
+            this.b_Submit.Location = new System.Drawing.Point(325, 212);
             this.b_Submit.Name = "b_Submit";
-            this.b_Submit.Size = new System.Drawing.Size(100, 42);
+            this.b_Submit.Size = new System.Drawing.Size(100, 38);
             this.b_Submit.TabIndex = 19;
             this.b_Submit.Text = "SUBMIT";
             this.b_Submit.UseVisualStyleBackColor = true;
@@ -229,15 +230,26 @@
             // 
             this.t_Email.Location = new System.Drawing.Point(136, 31);
             this.t_Email.Name = "t_Email";
-            this.t_Email.Size = new System.Drawing.Size(289, 20);
+            this.t_Email.Size = new System.Drawing.Size(183, 20);
             this.t_Email.TabIndex = 21;
+            // 
+            // b_Login
+            // 
+            this.b_Login.Location = new System.Drawing.Point(325, 21);
+            this.b_Login.Name = "b_Login";
+            this.b_Login.Size = new System.Drawing.Size(100, 38);
+            this.b_Login.TabIndex = 22;
+            this.b_Login.Text = "Login";
+            this.b_Login.UseVisualStyleBackColor = true;
+            this.b_Login.Click += new System.EventHandler(this.b_Login_Click);
             // 
             // f_CreateUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
-            this.ClientSize = new System.Drawing.Size(437, 290);
+            this.ClientSize = new System.Drawing.Size(437, 260);
+            this.Controls.Add(this.b_Login);
             this.Controls.Add(this.t_Email);
             this.Controls.Add(this.l_Email);
             this.Controls.Add(this.b_Submit);
@@ -292,5 +304,6 @@
         private System.Windows.Forms.Button b_Submit;
         private System.Windows.Forms.Label l_Email;
         private System.Windows.Forms.TextBox t_Email;
+        private System.Windows.Forms.Button b_Login;
     }
 }

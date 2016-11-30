@@ -1,6 +1,6 @@
 ﻿namespace ScannerProject
 {
-    partial class Form1
+    partial class f_MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,24 +32,27 @@
             this.listBox_Pending = new System.Windows.Forms.ListBox();
             this.l_CourseCode = new System.Windows.Forms.Label();
             this.l_Pending = new System.Windows.Forms.Label();
-            this.l_CheckedIn = new System.Windows.Forms.Label();
-            this.listBox_CheckedIn = new System.Windows.Forms.ListBox();
+            this.l_SignedIn = new System.Windows.Forms.Label();
+            this.listBox_SignedIn = new System.Windows.Forms.ListBox();
             this.l_Clock = new System.Windows.Forms.Label();
             this.timer_Clock = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.listBox_Absent = new System.Windows.Forms.ListBox();
+            this.l_Absent = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox_Pending
             // 
             this.listBox_Pending.FormattingEnabled = true;
-            this.listBox_Pending.Location = new System.Drawing.Point(30, 154);
+            this.listBox_Pending.Location = new System.Drawing.Point(12, 154);
             this.listBox_Pending.Name = "listBox_Pending";
-            this.listBox_Pending.Size = new System.Drawing.Size(195, 238);
+            this.listBox_Pending.Size = new System.Drawing.Size(180, 238);
             this.listBox_Pending.TabIndex = 2;
             // 
             // l_CourseCode
             // 
             this.l_CourseCode.AutoSize = true;
-            this.l_CourseCode.Location = new System.Drawing.Point(193, 103);
+            this.l_CourseCode.Location = new System.Drawing.Point(214, 24);
             this.l_CourseCode.Name = "l_CourseCode";
             this.l_CourseCode.Size = new System.Drawing.Size(68, 13);
             this.l_CourseCode.TabIndex = 8;
@@ -58,33 +61,33 @@
             // l_Pending
             // 
             this.l_Pending.AutoSize = true;
-            this.l_Pending.Location = new System.Drawing.Point(104, 138);
+            this.l_Pending.Location = new System.Drawing.Point(12, 138);
             this.l_Pending.Name = "l_Pending";
             this.l_Pending.Size = new System.Drawing.Size(46, 13);
             this.l_Pending.TabIndex = 11;
             this.l_Pending.Text = "Pending";
             // 
-            // l_CheckedIn
+            // l_SignedIn
             // 
-            this.l_CheckedIn.AutoSize = true;
-            this.l_CheckedIn.Location = new System.Drawing.Point(297, 138);
-            this.l_CheckedIn.Name = "l_CheckedIn";
-            this.l_CheckedIn.Size = new System.Drawing.Size(62, 13);
-            this.l_CheckedIn.TabIndex = 12;
-            this.l_CheckedIn.Text = "Checked In";
+            this.l_SignedIn.AutoSize = true;
+            this.l_SignedIn.Location = new System.Drawing.Point(195, 138);
+            this.l_SignedIn.Name = "l_SignedIn";
+            this.l_SignedIn.Size = new System.Drawing.Size(52, 13);
+            this.l_SignedIn.TabIndex = 12;
+            this.l_SignedIn.Text = "Signed In";
             // 
-            // listBox_CheckedIn
+            // listBox_SignedIn
             // 
-            this.listBox_CheckedIn.FormattingEnabled = true;
-            this.listBox_CheckedIn.Location = new System.Drawing.Point(231, 154);
-            this.listBox_CheckedIn.Name = "listBox_CheckedIn";
-            this.listBox_CheckedIn.Size = new System.Drawing.Size(195, 238);
-            this.listBox_CheckedIn.TabIndex = 15;
+            this.listBox_SignedIn.FormattingEnabled = true;
+            this.listBox_SignedIn.Location = new System.Drawing.Point(198, 154);
+            this.listBox_SignedIn.Name = "listBox_SignedIn";
+            this.listBox_SignedIn.Size = new System.Drawing.Size(180, 238);
+            this.listBox_SignedIn.TabIndex = 15;
             // 
             // l_Clock
             // 
             this.l_Clock.AutoSize = true;
-            this.l_Clock.Location = new System.Drawing.Point(559, 9);
+            this.l_Clock.Location = new System.Drawing.Point(508, 24);
             this.l_Clock.Name = "l_Clock";
             this.l_Clock.Size = new System.Drawing.Size(34, 13);
             this.l_Clock.TabIndex = 17;
@@ -96,20 +99,48 @@
             this.timer_Clock.Interval = 1;
             this.timer_Clock.Tick += new System.EventHandler(this.timer_Clock_Tick);
             // 
-            // Form1
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(576, 24);
+            this.menuStrip1.TabIndex = 18;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // listBox_Absent
+            // 
+            this.listBox_Absent.FormattingEnabled = true;
+            this.listBox_Absent.Location = new System.Drawing.Point(384, 154);
+            this.listBox_Absent.Name = "listBox_Absent";
+            this.listBox_Absent.Size = new System.Drawing.Size(180, 238);
+            this.listBox_Absent.TabIndex = 20;
+            // 
+            // l_Absent
+            // 
+            this.l_Absent.AutoSize = true;
+            this.l_Absent.Location = new System.Drawing.Point(381, 138);
+            this.l_Absent.Name = "l_Absent";
+            this.l_Absent.Size = new System.Drawing.Size(40, 13);
+            this.l_Absent.TabIndex = 19;
+            this.l_Absent.Text = "Absent";
+            // 
+            // f_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(656, 404);
+            this.ClientSize = new System.Drawing.Size(576, 404);
+            this.Controls.Add(this.listBox_Absent);
+            this.Controls.Add(this.l_Absent);
             this.Controls.Add(this.l_Clock);
-            this.Controls.Add(this.listBox_CheckedIn);
-            this.Controls.Add(this.l_CheckedIn);
+            this.Controls.Add(this.listBox_SignedIn);
+            this.Controls.Add(this.l_SignedIn);
             this.Controls.Add(this.l_Pending);
             this.Controls.Add(this.l_CourseCode);
             this.Controls.Add(this.listBox_Pending);
-            this.Name = "Form1";
-            this.Text = "Late Buster";
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "f_MainForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,10 +150,13 @@
         private System.Windows.Forms.ListBox listBox_Pending;
         private System.Windows.Forms.Label l_CourseCode;
         private System.Windows.Forms.Label l_Pending;
-        private System.Windows.Forms.Label l_CheckedIn;
-        private System.Windows.Forms.ListBox listBox_CheckedIn;
+        private System.Windows.Forms.Label l_SignedIn;
+        private System.Windows.Forms.ListBox listBox_SignedIn;
         private System.Windows.Forms.Label l_Clock;
         private System.Windows.Forms.Timer timer_Clock;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ListBox listBox_Absent;
+        private System.Windows.Forms.Label l_Absent;
     }
 }
 
