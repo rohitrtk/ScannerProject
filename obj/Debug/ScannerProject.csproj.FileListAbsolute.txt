@@ -23,3 +23,4 @@ E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_MainForm.re
 D:\Visual Studio Projects\C#\ScannerProject\obj\Debug\ScannerProject.f_MainForm.resources
 D:\Visual Studio Projects\C#\ScannerProject\obj\Debug\ScannerProject.f_AddOrRemoveStudentForm.resources
 E:\Computer Programming\C#\ScannerProject\obj\Debug\ScannerProject.f_AddOrRemoveStudentForm.resources
+D:\Visual Studio Projects\C#\ScannerProject\obj\Debug\ScannerProject.f_GraceTime.resources

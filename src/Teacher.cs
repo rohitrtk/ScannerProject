@@ -26,6 +26,7 @@ namespace ScannerProject
         /// <param name="id"></param>
         /// <param name="password"></param>
         /// <param name="courseStrings"></param>
+        /// <param name="graceTime"></param>
         public Teacher(string username, string lastName, string firstName, int id, string password, string[] courseStrings, int graceTime) 
             : base(lastName, firstName, id)
         {
