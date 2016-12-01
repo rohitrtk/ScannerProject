@@ -14,7 +14,7 @@
         public string FirstName {get;}
 
         // The ID number of the person
-        protected int Id;
+        public int Id;
 #endregion
 
         /// <summary>

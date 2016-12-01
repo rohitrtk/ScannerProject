@@ -10,7 +10,7 @@ namespace ScannerProject
     internal static partial class DataManager
     {
         // Enum of periods throughout the day with their respective values
-        public enum Period { Period1 = 1, Period2, Period3, Period4, Period5, Break = 0, Spare = 0, Noperiod = -1 }
+        public enum Period { Period1 = 1, Period2, Period3, Period4, Period5, Break = 0, Spare = 0, Noperiod = 0 }
 
         // String of the file location which is used to let people log in
         public static string LoginFile { get; } = "Logins.lbs";
@@ -108,8 +108,8 @@ namespace ScannerProject
         /// <param name="data"></param>
         public static void SaveAllData(string fileName, string[] data)
         {
-            var writer = File.AppendText(fileName);
-            //var writer = new StreamWriter(fileName);
+            //var writer = File.AppendText(fileName);
+            var writer = new StreamWriter(fileName);
 
             foreach (var s in data)
             {

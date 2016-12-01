@@ -29,6 +29,17 @@ namespace ScannerProject
 
             // Set the title of the MainForm
             Text += "Late Buster: Lobby | " + _teacher.Username;
+
+            CurrentPeriod = GetCurrentPeriod();
+
+            LoadInfo();
+        }
+
+        private void LoadInfo()
+        {
+            var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode + ".lbs");
+            
+            DataManager.LoadAllData(data, listBox_Pending);
         }
 
         /// <summary>
@@ -38,19 +49,25 @@ namespace ScannerProject
         /// <param name="e"></param>
         private void timer_Clock_Tick(object sender, EventArgs e)
         {
-            // What period is it?
-            if (DateTime.Now.CompareTo(DateTime.Parse("02:35:00 PM")) >= 0 || DateTime.Now.CompareTo(DateTime.Parse("08:10:00")) < 0) CurrentPeriod = (int) DataManager.Period.Noperiod;
-            else if (DateTime.Now.CompareTo(DateTime.Parse("01:21:00 PM")) >= 0) CurrentPeriod = (int) DataManager.Period.Period5;
-            else if (DateTime.Now.CompareTo(DateTime.Parse("12:04:00 PM")) >= 0) CurrentPeriod = (int) DataManager.Period.Period4;
-            else if (DateTime.Now.CompareTo(DateTime.Parse("10:47:00 AM")) >= 0) CurrentPeriod = (int) DataManager.Period.Period3;
-            else if (DateTime.Now.CompareTo(DateTime.Parse("09:30:00 AM")) >= 0) CurrentPeriod = (int) DataManager.Period.Period2;
-            else if (DateTime.Now.CompareTo(DateTime.Parse("08:10:00 AM")) >= 0) CurrentPeriod = (int) DataManager.Period.Period1;
+            CurrentPeriod = GetCurrentPeriod();
 
             // Set the course code label to the course that coresponds with the time
             l_CourseCode.Text = _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode;
 
             // Update the clock
             l_Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
+        }
+
+        private static int GetCurrentPeriod()
+        {
+            // What period is it?
+            if (DateTime.Now.CompareTo(DateTime.Parse("02:35:00 PM")) >= 0 || DateTime.Now.CompareTo(DateTime.Parse("08:10:00")) < 0) return (int)DataManager.Period.Noperiod;
+            if (DateTime.Now.CompareTo(DateTime.Parse("01:21:00 PM")) >= 0) return (int)DataManager.Period.Period5;
+            if (DateTime.Now.CompareTo(DateTime.Parse("12:04:00 PM")) >= 0) return (int)DataManager.Period.Period4;
+            if (DateTime.Now.CompareTo(DateTime.Parse("10:47:00 AM")) >= 0) return (int)DataManager.Period.Period3;
+            if (DateTime.Now.CompareTo(DateTime.Parse("09:30:00 AM")) >= 0) return (int)DataManager.Period.Period2;
+            if (DateTime.Now.CompareTo(DateTime.Parse("08:10:00 AM")) >= 0) return (int)DataManager.Period.Period1;
+            return 0;
         }
 
         private void toolStripMenuItem_AddOrRemoveStudent_Click(object sender, EventArgs e)
