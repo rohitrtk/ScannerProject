@@ -11,6 +11,12 @@ namespace ScannerProject
         // This courses course code
         public string CourseCode { get; set; }
 
+        // Time in seconds student has to get to class after the bell
+        public int GraceTime { get; set; }
+
+        // Maximum time in seconds student has to get to class
+        public const int MaxGraceTime = 180;
+
         // Students in this course
         public List<Student> StudentsInCourse;
 

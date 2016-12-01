@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Mail;
 using System.Text;
 using System.Windows.Forms;
 
@@ -10,7 +13,17 @@ namespace ScannerProject
     internal static partial class DataManager
     {
         // Enum of periods throughout the day with their respective values
-        public enum Period { Period1 = 1, Period2, Period3, Period4, Period5, Break = 0, Spare = 0, Noperiod = 0 }
+        public enum Period
+        {
+            Period1 = 1,
+            Period2,
+            Period3,
+            Period4,
+            Period5,
+            Break = 0,
+            Spare = 0,
+            Noperiod = 0
+        }
 
         // String of the file location which is used to let people log in
         public static string LoginFile { get; } = "Logins.lbs";
@@ -29,11 +42,11 @@ namespace ScannerProject
             int[] indices = new int[fields.Length];
 
             //get the file header
-            rawData = reader.ReadLine();//done in two steps for clarity
-            header = rawData.Split(',');//this contains the headers
+            rawData = reader.ReadLine(); //done in two steps for clarity
+            header = rawData.Split(','); //this contains the headers
             for (int i = 0; i < header.Length; i++)
             {
-                header[i] = header[i].ToUpper();//just to remove the possibility of problems due to case
+                header[i] = header[i].ToUpper(); //just to remove the possibility of problems due to case
                 for (int j = 0; j < fields.Length; j++)
                 {
                     fields[j] = fields[j].ToUpper();
@@ -55,16 +68,10 @@ namespace ScannerProject
         /// <returns></returns>
         public static string[] ReadAllData(string fileName)
         {
-            try
-            {
-                return File.ReadAllLines(fileName);
-            }
-            catch
-            {
-                throw new System.ArgumentException("An error occured while reading your file!" +
-                                          "\n Please make sure you type the .extention of your file!",
-                                          "original");
-            }
+            if (File.Exists(fileName)) return File.ReadAllLines(fileName);
+
+            File.Create(fileName);
+            return File.ReadAllLines(fileName);
         }
 
         /// <summary>
@@ -94,7 +101,7 @@ namespace ScannerProject
         /// <param name="data"></param>
         public static void SaveAllData(string fileName, string data)
         {
-            TextWriter writer = new StreamWriter(fileName, append:true);
+            TextWriter writer = new StreamWriter(fileName, append: true);
 
             writer.WriteLine("\n" + data);
 
@@ -117,6 +124,40 @@ namespace ScannerProject
             }
 
             writer.Close();
+        }
+
+        public static void SendMail(Student std)
+        {
+            try
+            {
+                var lateMail = new MailMessage();
+                var smtpServer = new SmtpClient("smtp.gmail.com");
+
+                lateMail.From = new MailAddress("scannerprojectics4u@gmail.com");
+
+                lateMail.To.Add(std.ParentEmail);
+                lateMail.Body = "Your child " + std.FirstName + " was late to one or more of their classes today " + "";
+
+                lateMail.Subject = "CKSS Late Student";
+
+                smtpServer.Port = 587;
+                smtpServer.Credentials = new System.Net.NetworkCredential("scannerprojectics4u", "scannerproject");
+                smtpServer.EnableSsl = true;
+
+                smtpServer.Send(lateMail);
+
+                MessageBox.Show("Message Sent To " + lateMail.To);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void SendMail(List<Student> students)
+        {
+            foreach (var s in students) SendMail(s);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace ScannerProject
 #region _VARIABLES_
         public string Username { get; }
         public string Password { get; }
+        public int GraceTime { get; }
         public CourseManager CourseManager;
 #endregion
 
@@ -25,11 +26,12 @@ namespace ScannerProject
         /// <param name="id"></param>
         /// <param name="password"></param>
         /// <param name="courseStrings"></param>
-        public Teacher(string username, string lastName, string firstName, int id, string password, string[] courseStrings) 
+        public Teacher(string username, string lastName, string firstName, int id, string password, string[] courseStrings, int graceTime) 
             : base(lastName, firstName, id)
         {
             Username = username;
             Password = password;
+            GraceTime = graceTime;
             CourseManager = new CourseManager();
 
             // Add courses to the list of courses based on the data retrived from .lbs file

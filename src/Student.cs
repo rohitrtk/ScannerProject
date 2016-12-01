@@ -1,4 +1,6 @@
-﻿namespace ScannerProject
+﻿using System;
+
+namespace ScannerProject
 {
     /// <summary>
     /// This class inherits from Person, contains a parent email and a boolean
@@ -12,6 +14,13 @@
 
         // Whether or not this student was absent in x class
         public bool Absent { set; get; }
+
+        // How much late time they have accumulated
+        public DateTime LateTime { set; get; }
+
+        // If this student getting a detention
+        public bool IsGettingDetention { set; get; }
+        
 #endregion
 
         /// <summary>

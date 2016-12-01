@@ -37,6 +37,7 @@ namespace ScannerProject
 
         private void LoadInfo()
         {
+            Console.WriteLine(CurrentPeriod);
             var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode + ".lbs");
             
             DataManager.LoadAllData(data, listBox_Pending);
@@ -74,6 +75,11 @@ namespace ScannerProject
         {
             var form = new f_AddOrRemoveStudentForm(_teacher, _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod));
             form.Show();
+        }
+
+        private void setGraceTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new f_GraceTime();
         }
     }
 }

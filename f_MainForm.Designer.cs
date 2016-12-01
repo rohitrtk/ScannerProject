@@ -43,6 +43,7 @@
             this.l_Absent = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.l_Late = new System.Windows.Forms.Label();
+            this.setGraceTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,7 +118,8 @@
             // toolStripMenuItem_Class
             // 
             this.toolStripMenuItem_Class.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem_AddOrRemoveStudent});
+            this.toolStripMenuItem_AddOrRemoveStudent,
+            this.setGraceTimeToolStripMenuItem});
             this.toolStripMenuItem_Class.Name = "toolStripMenuItem_Class";
             this.toolStripMenuItem_Class.Size = new System.Drawing.Size(46, 20);
             this.toolStripMenuItem_Class.Text = "Class";
@@ -163,11 +165,18 @@
             this.l_Late.TabIndex = 22;
             this.l_Late.Text = "Late";
             // 
+            // setGraceTimeToolStripMenuItem
+            // 
+            this.setGraceTimeToolStripMenuItem.Name = "setGraceTimeToolStripMenuItem";
+            this.setGraceTimeToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.setGraceTimeToolStripMenuItem.Text = "Set Grace Time";
+            this.setGraceTimeToolStripMenuItem.Click += new System.EventHandler(this.setGraceTimeToolStripMenuItem_Click);
+            // 
             // f_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Azure;
+            this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(763, 322);
             this.Controls.Add(this.l_Late);
             this.Controls.Add(this.listBox1);
@@ -180,6 +189,7 @@
             this.Controls.Add(this.l_CourseCode);
             this.Controls.Add(this.listBox_Pending);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "f_MainForm";
             this.menuStrip1.ResumeLayout(false);
@@ -204,6 +214,7 @@
         private System.Windows.Forms.Label l_Late;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Class;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_AddOrRemoveStudent;
+        private System.Windows.Forms.ToolStripMenuItem setGraceTimeToolStripMenuItem;
     }
 }
 
