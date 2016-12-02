@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Windows.Forms;
@@ -15,14 +16,14 @@ namespace ScannerProject
         // Enum of periods throughout the day with their respective values
         public enum Period
         {
-            Period1 = 1,
+            Period1 = 0,
             Period2,
             Period3,
             Period4,
             Period5,
-            Break = 0,
-            Spare = 0,
-            Noperiod = 0
+            Break = -1,
+            Spare = -1,
+            Noperiod = -1
         }
 
         // String of the file location which is used to let people log in
@@ -72,6 +73,42 @@ namespace ScannerProject
 
             File.Create(fileName);
             return File.ReadAllLines(fileName);
+        }
+
+        public static string[] ReadAllData(string fileName, int graceTime)
+        {
+            if (File.Exists(fileName)) return File.ReadAllLines(fileName);
+
+            File.Create(fileName);
+            SaveAllData(fileName, graceTime.ToString());
+            return File.ReadAllLines(fileName);
+        }
+
+        public static string ReadLine(string fileName, int lineNumber)
+        {
+            if (!File.Exists(fileName))
+            {
+                File.Create(fileName);
+            }
+
+            SaveAllData(fileName, "30");
+
+            return File.ReadAllLines(fileName).First();
+        }
+
+        public static void CreateCourses(string[] courseNames)
+        {
+            foreach (var c in courseNames)
+            {
+                try
+                {
+                    if (!File.Exists(c)) File.Create(c + ".lbs");
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
         }
 
         /// <summary>

@@ -33,6 +33,13 @@ namespace ScannerProject
 
             CourseCode = courseCode;
             Period = period;
+
+            int number;
+            bool result = int.TryParse(DataManager.ReadLine(CourseCode + ".lbs", 1), out number);
+            if(result)
+            {
+                Console.WriteLine("success");    
+            }
         }
     }
 }

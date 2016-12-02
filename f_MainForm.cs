@@ -13,7 +13,7 @@ namespace ScannerProject
         public int CurrentPeriod;
 
         // Teacher object
-        private Teacher _teacher;
+        private readonly Teacher _teacher;
 #endregion
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace ScannerProject
         private void LoadInfo()
         {
             Console.WriteLine(CurrentPeriod);
-            var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode + ".lbs");
+            var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode + ".lbs", _teacher.GraceTime);
             
             DataManager.LoadAllData(data, listBox_Pending);
         }
@@ -61,6 +61,9 @@ namespace ScannerProject
 
         private static int GetCurrentPeriod()
         {
+            // Force a period to be returned despite time, use for debugging purposes
+            return (int)DataManager.Period.Period1;
+
             // What period is it?
             if (DateTime.Now.CompareTo(DateTime.Parse("02:35:00 PM")) >= 0 || DateTime.Now.CompareTo(DateTime.Parse("08:10:00")) < 0) return (int)DataManager.Period.Noperiod;
             if (DateTime.Now.CompareTo(DateTime.Parse("01:21:00 PM")) >= 0) return (int)DataManager.Period.Period5;
@@ -79,7 +82,8 @@ namespace ScannerProject
 
         private void setGraceTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new f_GraceTime();
+            var form = new f_GraceTime(_teacher.GraceTime);
+            form.Show();
         }
     }
 }

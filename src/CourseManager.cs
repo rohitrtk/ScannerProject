@@ -30,7 +30,7 @@ namespace ScannerProject
         /// <returns></returns>
         public Course GetCourseAtPeriod(int p)
         {
-            return p < 1 ? new Course("NONE", p) : ListOfCourses[p];
+            return p < 0 ? new Course("NONE", p) : ListOfCourses[p];
         }
     }
 }

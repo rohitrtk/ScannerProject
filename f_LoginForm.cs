@@ -46,7 +46,6 @@ namespace ScannerProject
 
             // Set the _password to the text of the password box
             _password = t_Password.Text;
-            
             // Foreach string in data
             foreach (var s in data)
             {
@@ -63,9 +62,9 @@ namespace ScannerProject
                     var courses = new string[5];
                     for (var i = 0; i < 5; i++)
                     {
-                        courses[i] = temp[i + 3];
+                        courses[i] = temp[i + 4];
                     }
-
+                    //DataManager.CreateCourses(courses);
                     // Create a new MainForm, pass in a new teacher with parameters from the .lbs file
                     var form = new f_MainForm(new Teacher(temp[0], temp[2], temp[3], 0, temp[1], courses, int.Parse(temp[10])));
                     form.Show();

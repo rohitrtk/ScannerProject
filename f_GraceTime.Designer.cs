@@ -41,6 +41,7 @@
             this.b_Save.TabIndex = 0;
             this.b_Save.Text = "Save";
             this.b_Save.UseVisualStyleBackColor = true;
+            this.b_Save.Click += new System.EventHandler(this.b_Save_Click);
             // 
             // l_GraceTime
             // 
