@@ -41,6 +41,7 @@ namespace ScannerProject
             {
                 CourseManager.ListOfCourses.Add(new Course(s, i));
                 CourseManager.ListOfCourses[i].GraceTime = graceTime;
+                Console.WriteLine(graceTime);
                 i++;
             }
         }

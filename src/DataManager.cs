@@ -69,21 +69,26 @@ namespace ScannerProject
         /// <returns></returns>
         public static string[] ReadAllData(string fileName)
         {
-            if (File.Exists(fileName)) return File.ReadAllLines(fileName);
 
-            File.Create(fileName);
-            return File.ReadAllLines(fileName);
+            using (var stream = File.Open(fileName, FileMode.Open))
+            {
+                if (File.Exists(fileName)) return File.ReadAllLines(fileName);
+                
+                File.Create(fileName);
+                return File.ReadAllLines(fileName);
+            }
         }
 
-        public static string[] ReadAllData(string fileName, int graceTime)
-        {
-            if (File.Exists(fileName)) return File.ReadAllLines(fileName);
+        //public static string[] ReadAllData(string fileName, int graceTime)
+        //{
+          //  if (File.Exists(fileName)) return File.ReadAllLines(fileName);
 
-            File.Create(fileName);
-            SaveAllData(fileName, graceTime.ToString());
-            return File.ReadAllLines(fileName);
-        }
+            //File.Create(fileName);
+            //SaveAllData(fileName, graceTime.ToString());
+            //return File.ReadAllLines(fileName);
+        //}
 
+        /*
         public static string ReadLine(string fileName, int lineNumber)
         {
             if (!File.Exists(fileName))
@@ -95,14 +100,16 @@ namespace ScannerProject
 
             return File.ReadAllLines(fileName).First();
         }
+        */
 
+            /*
         public static void CreateCourses(string[] courseNames)
         {
             foreach (var c in courseNames)
             {
+                    if (!File.Exists(c)) File.Create(c + ".lbs");
                 try
                 {
-                    if (!File.Exists(c)) File.Create(c + ".lbs");
                 }
                 catch (Exception)
                 {
@@ -110,7 +117,7 @@ namespace ScannerProject
                 }
             }
         }
-
+        */
         /// <summary>
         /// Called when data is needed to be loaded into a list box
         /// </summary>
@@ -138,6 +145,8 @@ namespace ScannerProject
         /// <param name="data"></param>
         public static void SaveAllData(string fileName, string data)
         {
+            if (!File.Exists(fileName)) File.Create(fileName);
+
             TextWriter writer = new StreamWriter(fileName, append: true);
 
             writer.WriteLine("\n" + data);

@@ -38,7 +38,7 @@ namespace ScannerProject
         private void LoadInfo()
         {
             Console.WriteLine(CurrentPeriod);
-            var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode + ".lbs", _teacher.GraceTime);
+            var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode + ".lbs");
             
             DataManager.LoadAllData(data, listBox_Pending);
         }
@@ -51,7 +51,7 @@ namespace ScannerProject
         private void timer_Clock_Tick(object sender, EventArgs e)
         {
             CurrentPeriod = GetCurrentPeriod();
-
+            
             // Set the course code label to the course that coresponds with the time
             l_CourseCode.Text = _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode;
 
@@ -62,7 +62,7 @@ namespace ScannerProject
         private static int GetCurrentPeriod()
         {
             // Force a period to be returned despite time, use for debugging purposes
-            return (int)DataManager.Period.Period1;
+            //return (int)DataManager.Period.Period1;
 
             // What period is it?
             if (DateTime.Now.CompareTo(DateTime.Parse("02:35:00 PM")) >= 0 || DateTime.Now.CompareTo(DateTime.Parse("08:10:00")) < 0) return (int)DataManager.Period.Noperiod;
