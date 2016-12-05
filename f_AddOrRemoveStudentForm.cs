@@ -33,20 +33,11 @@ namespace ScannerProject
             ListOfStudents = new List<Student>();
 
             data = DataManager.ReadAllData(_course.CourseCode);
-
-            foreach (var d in data)
-            {
-                ListOfStudents.Add(new Student("Kisto", "Rohit", int.Parse(d), "asd@hotmail.com"));
-                listBox_StudentsInClass.Items.Add(ListOfStudents.Last().FirstName);
-            }
         }
 
         private void textBox_AddStudent_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (timer_Scanner.Enabled || textBox_AddStudent.Text.Length != 0) return;
-
-            textBox_AddStudent.Clear();
-            timer_Scanner.Start();
+            DataManager.GetScannerInput(timer_Scanner, textBox_AddStudent);
         }
 
         private void button_AddStudent_Click(object sender, EventArgs e)
@@ -61,6 +52,7 @@ namespace ScannerProject
 
         private void listBox_StudentsInClass_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listBox_StudentsInClass.SelectedIndex < 0) return;
             ListOfStudents.RemoveAt(listBox_StudentsInClass.SelectedIndex);
             listBox_StudentsInClass.Items.Remove(listBox_StudentsInClass.SelectedItem);
         }

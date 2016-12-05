@@ -39,11 +39,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem_Class = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_AddOrRemoveStudent = new System.Windows.Forms.ToolStripMenuItem();
+            this.setGraceTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBox_Absent = new System.Windows.Forms.ListBox();
             this.l_Absent = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.l_Late = new System.Windows.Forms.Label();
-            this.setGraceTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox_AutoLate = new System.Windows.Forms.CheckBox();
+            this.l_LateTime = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +69,7 @@
             // l_Pending
             // 
             this.l_Pending.AutoSize = true;
-            this.l_Pending.Location = new System.Drawing.Point(13, 56);
+            this.l_Pending.Location = new System.Drawing.Point(10, 56);
             this.l_Pending.Name = "l_Pending";
             this.l_Pending.Size = new System.Drawing.Size(46, 13);
             this.l_Pending.TabIndex = 11;
@@ -131,6 +133,13 @@
             this.toolStripMenuItem_AddOrRemoveStudent.Text = "Add/Remove Student";
             this.toolStripMenuItem_AddOrRemoveStudent.Click += new System.EventHandler(this.toolStripMenuItem_AddOrRemoveStudent_Click);
             // 
+            // setGraceTimeToolStripMenuItem
+            // 
+            this.setGraceTimeToolStripMenuItem.Name = "setGraceTimeToolStripMenuItem";
+            this.setGraceTimeToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.setGraceTimeToolStripMenuItem.Text = "Set Grace Time";
+            this.setGraceTimeToolStripMenuItem.Click += new System.EventHandler(this.setGraceTimeToolStripMenuItem_Click);
+            // 
             // listBox_Absent
             // 
             this.listBox_Absent.FormattingEnabled = true;
@@ -165,12 +174,25 @@
             this.l_Late.TabIndex = 22;
             this.l_Late.Text = "Late";
             // 
-            // setGraceTimeToolStripMenuItem
+            // checkBox_AutoLate
             // 
-            this.setGraceTimeToolStripMenuItem.Name = "setGraceTimeToolStripMenuItem";
-            this.setGraceTimeToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.setGraceTimeToolStripMenuItem.Text = "Set Grace Time";
-            this.setGraceTimeToolStripMenuItem.Click += new System.EventHandler(this.setGraceTimeToolStripMenuItem_Click);
+            this.checkBox_AutoLate.AutoSize = true;
+            this.checkBox_AutoLate.Location = new System.Drawing.Point(13, 36);
+            this.checkBox_AutoLate.Name = "checkBox_AutoLate";
+            this.checkBox_AutoLate.Size = new System.Drawing.Size(72, 17);
+            this.checkBox_AutoLate.TabIndex = 23;
+            this.checkBox_AutoLate.Text = "Auto-Late";
+            this.checkBox_AutoLate.UseVisualStyleBackColor = true;
+            this.checkBox_AutoLate.CheckedChanged += new System.EventHandler(this.checkBox_AutoLate_CheckedChanged);
+            // 
+            // l_LateTime
+            // 
+            this.l_LateTime.AutoSize = true;
+            this.l_LateTime.Location = new System.Drawing.Point(382, 36);
+            this.l_LateTime.Name = "l_LateTime";
+            this.l_LateTime.Size = new System.Drawing.Size(59, 13);
+            this.l_LateTime.TabIndex = 24;
+            this.l_LateTime.Text = "l_LateTime";
             // 
             // f_MainForm
             // 
@@ -178,6 +200,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(763, 322);
+            this.Controls.Add(this.l_LateTime);
+            this.Controls.Add(this.checkBox_AutoLate);
             this.Controls.Add(this.l_Late);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.listBox_Absent);
@@ -190,6 +214,7 @@
             this.Controls.Add(this.listBox_Pending);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "f_MainForm";
             this.menuStrip1.ResumeLayout(false);
@@ -215,6 +240,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Class;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_AddOrRemoveStudent;
         private System.Windows.Forms.ToolStripMenuItem setGraceTimeToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox_AutoLate;
+        private System.Windows.Forms.Label l_LateTime;
     }
 }
 

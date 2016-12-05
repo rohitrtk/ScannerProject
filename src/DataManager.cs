@@ -81,7 +81,6 @@ namespace ScannerProject
         {
             var data = File.ReadLines(fileName).ToList();
 
-            if (data[0] == null) return data.ToArray();
             if(ignoreFirstLine) data.RemoveAt(0);
 
             return data.ToArray();
@@ -108,6 +107,11 @@ namespace ScannerProject
                 if (File.Exists(c)) continue;
   
                 var myFile = File.Create(c);
+
+                var firstLine = DefaultGraceTime;
+                myFile.Close();
+                SaveAllData(c, firstLine.ToString());
+
                 myFile.Close();
             }
         }
@@ -123,6 +127,12 @@ namespace ScannerProject
 
             foreach (var s in data)
             {
+                if (i == 0)
+                {
+                    i++;
+                    continue;
+                }
+
                 var strb = new StringBuilder(s);
 
                 data[i] = strb.ToString();
@@ -164,6 +174,14 @@ namespace ScannerProject
             }
 
             writer.Close();
+        }
+
+        public static void GetScannerInput(Timer timer, TextBox textBox)
+        {
+            if (timer.Enabled || textBox.Text.Length != 0) return;
+
+            textBox.Clear();
+            timer.Start();
         }
 
         public static void SendMail(Student std)

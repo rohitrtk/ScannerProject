@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ScannerProject
@@ -14,6 +16,13 @@ namespace ScannerProject
 
         // Teacher object
         private readonly Teacher _teacher;
+
+        private bool _autoLate;
+
+        private string[] _data;
+
+        private List<string> _totalStudenList;
+
 #endregion
 
         /// <summary>
@@ -27,6 +36,10 @@ namespace ScannerProject
             // Assigns this.teacher the value of the teacher passed in
             _teacher = teacher;
 
+            _autoLate = false;
+
+            _totalStudenList = new List<string>();
+
             // Set the title of the MainForm
             Text += "Late Buster: Lobby | " + _teacher.Username;
 
@@ -37,9 +50,9 @@ namespace ScannerProject
 
         private void LoadInfo()
         {
-            var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode, true);
-            
-            DataManager.LoadAllData(data, listBox_Pending);
+            _data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode);
+            _totalStudenList = _data.ToList();
+            DataManager.LoadAllData(_data, listBox_Pending);
         }
 
         /// <summary>
@@ -56,6 +69,17 @@ namespace ScannerProject
 
             // Update the clock
             l_Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
+
+            
+        }
+
+        private void f_MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var key = e.KeyChar;
+            if (key >= 48 && key <= 57)
+            {
+                //DataManager.GetScannerInput();
+            }
         }
 
         private static int GetCurrentPeriod()
@@ -83,6 +107,11 @@ namespace ScannerProject
         {
             var form = new f_GraceTime(_teacher.GraceTime, _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod));
             form.Show();
+        }
+
+        private void checkBox_AutoLate_CheckedChanged(object sender, EventArgs e)
+        {
+            _autoLate = checkBox_AutoLate.Checked;
         }
     }
 }
