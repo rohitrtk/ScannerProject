@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace ScannerProject
 {
@@ -20,6 +14,7 @@ namespace ScannerProject
 
         private string _title;
         private readonly List<Student> ListOfStudents;
+        private string[] data;
 #endregion
 
         public f_AddOrRemoveStudentForm(Teacher teacher, Course course)
@@ -29,7 +24,7 @@ namespace ScannerProject
             _teacher = teacher;
             _course = course;
 
-            _title = "Late Buster: Add/Remove -> " + _course.CourseCode + " | " + _teacher.Username;
+            _title = ("Late Buster: Add/Remove -> " + _course.CourseCode + " | " + _teacher.Username).Replace(".lbs", string.Empty);
             Text = _title;
 
             l_Help.Text = "Scan a student card to add them to\nthe class. Click on a students name in\nthe box" +
@@ -37,12 +32,36 @@ namespace ScannerProject
 
             ListOfStudents = new List<Student>();
 
-            ListOfStudents.Add(new Student("Kisto", "Rohit", 0, "rtkbfmvbvb@hotmail.com"));
-            listBox_StudentsInClass.Items.Add(ListOfStudents[0].FirstName + " " + ListOfStudents[0].LastName);
+            data = DataManager.ReadAllData(_course.CourseCode);
+
+            foreach (var d in data)
+            {
+                ListOfStudents.Add(new Student("Kisto", "Rohit", int.Parse(d), "asd@hotmail.com"));
+                listBox_StudentsInClass.Items.Add(ListOfStudents.Last().FirstName);
+            }
+        }
+
+        private void textBox_AddStudent_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (timer_Scanner.Enabled || textBox_AddStudent.Text.Length != 0) return;
+
+            textBox_AddStudent.Clear();
+            timer_Scanner.Start();
+        }
+
+        private void button_AddStudent_Click(object sender, EventArgs e)
+        {
+            var studentID = textBox_AddStudent.Text;
+
+            if (studentID.Equals(string.Empty)) return;
+
+            ListOfStudents.Add(new Student("Rohit", "Kisto", int.Parse(studentID), "weed@hotmail.com"));
+            listBox_StudentsInClass.Items.Add(ListOfStudents.Last().FirstName);
         }
 
         private void listBox_StudentsInClass_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ListOfStudents.RemoveAt(listBox_StudentsInClass.SelectedIndex);
             listBox_StudentsInClass.Items.Remove(listBox_StudentsInClass.SelectedItem);
         }
 
@@ -56,7 +75,7 @@ namespace ScannerProject
                 i++;
             }
 
-            DataManager.SaveAllData(_course.CourseCode + ".lbs", data);
+            DataManager.SaveAllData(_course.CourseCode, data);
         }
     }
 }

@@ -37,8 +37,7 @@ namespace ScannerProject
 
         private void LoadInfo()
         {
-            Console.WriteLine(CurrentPeriod);
-            var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode + ".lbs");
+            var data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode, true);
             
             DataManager.LoadAllData(data, listBox_Pending);
         }
@@ -53,7 +52,7 @@ namespace ScannerProject
             CurrentPeriod = GetCurrentPeriod();
             
             // Set the course code label to the course that coresponds with the time
-            l_CourseCode.Text = _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode;
+            l_CourseCode.Text = _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode.Replace(".lbs", string.Empty);
 
             // Update the clock
             l_Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
@@ -82,7 +81,7 @@ namespace ScannerProject
 
         private void setGraceTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new f_GraceTime(_teacher.GraceTime);
+            var form = new f_GraceTime(_teacher.GraceTime, _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod));
             form.Show();
         }
     }

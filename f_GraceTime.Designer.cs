@@ -35,7 +35,7 @@
             // 
             // b_Save
             // 
-            this.b_Save.Location = new System.Drawing.Point(79, 51);
+            this.b_Save.Location = new System.Drawing.Point(107, 51);
             this.b_Save.Name = "b_Save";
             this.b_Save.Size = new System.Drawing.Size(75, 23);
             this.b_Save.TabIndex = 0;
@@ -46,7 +46,7 @@
             // l_GraceTime
             // 
             this.l_GraceTime.AutoSize = true;
-            this.l_GraceTime.Location = new System.Drawing.Point(60, 9);
+            this.l_GraceTime.Location = new System.Drawing.Point(88, 9);
             this.l_GraceTime.Name = "l_GraceTime";
             this.l_GraceTime.Size = new System.Drawing.Size(113, 13);
             this.l_GraceTime.TabIndex = 1;
@@ -54,23 +54,24 @@
             // 
             // textBox_GraceTime
             // 
-            this.textBox_GraceTime.Location = new System.Drawing.Point(60, 25);
+            this.textBox_GraceTime.Location = new System.Drawing.Point(88, 25);
             this.textBox_GraceTime.Name = "textBox_GraceTime";
             this.textBox_GraceTime.Size = new System.Drawing.Size(113, 20);
             this.textBox_GraceTime.TabIndex = 2;
+            this.textBox_GraceTime.TextChanged += new System.EventHandler(this.textBox_GraceTime_TextChanged);
             // 
             // f_GraceTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(241, 79);
+            this.ClientSize = new System.Drawing.Size(288, 79);
             this.Controls.Add(this.textBox_GraceTime);
             this.Controls.Add(this.l_GraceTime);
             this.Controls.Add(this.b_Save);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "f_GraceTime";
-            this.Text = "f_GraceTime";
+            this.Text = "Late Buster: Grace";
             this.ResumeLayout(false);
             this.PerformLayout();
 

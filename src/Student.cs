@@ -16,7 +16,10 @@ namespace ScannerProject
         public bool Absent { set; get; }
 
         // How much late time they have accumulated
-        public DateTime LateTime { set; get; }
+        public int LateTime;
+
+        // The max time a student can accumulate before detention
+        private const int _maxTime = 3600;
 
         // If this student getting a detention
         public bool IsGettingDetention { set; get; }

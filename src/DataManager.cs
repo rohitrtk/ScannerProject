@@ -29,6 +29,8 @@ namespace ScannerProject
         // String of the file location which is used to let people log in
         public static string LoginFile { get; } = "Logins.lbs";
 
+        public static int DefaultGraceTime { get; } = 30;
+
         /// <summary>
         /// Rowbottoms method
         /// </summary>
@@ -69,55 +71,47 @@ namespace ScannerProject
         /// <returns></returns>
         public static string[] ReadAllData(string fileName)
         {
-
-            using (var stream = File.Open(fileName, FileMode.Open))
-            {
-                if (File.Exists(fileName)) return File.ReadAllLines(fileName);
-                
-                File.Create(fileName);
-                return File.ReadAllLines(fileName);
-            }
-        }
-
-        //public static string[] ReadAllData(string fileName, int graceTime)
-        //{
-          //  if (File.Exists(fileName)) return File.ReadAllLines(fileName);
+            //if (File.Exists(fileName)) return File.ReadAllLines(fileName);
 
             //File.Create(fileName);
-            //SaveAllData(fileName, graceTime.ToString());
-            //return File.ReadAllLines(fileName);
-        //}
+            return File.ReadAllLines(fileName);
+        }
 
-        /*
+        public static string[] ReadAllData(string fileName, bool ignoreFirstLine)
+        {
+            var data = File.ReadLines(fileName).ToList();
+
+            if (data[0] == null) return data.ToArray();
+            if(ignoreFirstLine) data.RemoveAt(0);
+
+            return data.ToArray();
+        }
+
         public static string ReadLine(string fileName, int lineNumber)
         {
-            if (!File.Exists(fileName))
-            {
-                File.Create(fileName);
-            }
+            var data = ReadAllData(fileName);
 
-            SaveAllData(fileName, "30");
+            if(lineNumber > data.Length) throw new IndexOutOfRangeException(); 
 
-            return File.ReadAllLines(fileName).First();
+            return data[lineNumber];
         }
-        */
 
-            /*
         public static void CreateCourses(string[] courseNames)
         {
+            for (var i = 0; i < courseNames.Length; i++)
+            {
+                courseNames[i] += ".lbs";
+            }
+
             foreach (var c in courseNames)
             {
-                    if (!File.Exists(c)) File.Create(c + ".lbs");
-                try
-                {
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
+                if (File.Exists(c)) continue;
+  
+                var myFile = File.Create(c);
+                myFile.Close();
             }
         }
-        */
+        
         /// <summary>
         /// Called when data is needed to be loaded into a list box
         /// </summary>
@@ -149,7 +143,7 @@ namespace ScannerProject
 
             TextWriter writer = new StreamWriter(fileName, append: true);
 
-            writer.WriteLine("\n" + data);
+            writer.WriteLine(data);
 
             writer.Close();
         }

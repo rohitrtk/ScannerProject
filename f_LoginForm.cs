@@ -65,7 +65,8 @@ namespace ScannerProject
                         courses[i] = temp[i + 4];
                     }
                     temp[10] = "30";
-                    //DataManager.CreateCourses(courses);
+                    DataManager.CreateCourses(courses);
+                    
                     // Create a new MainForm, pass in a new teacher with parameters from the .lbs file
                     var form = new f_MainForm(new Teacher(temp[0], temp[2], temp[3], 0, temp[1], courses, int.Parse(temp[10])));
                     form.Show();
