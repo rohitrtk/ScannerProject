@@ -29,6 +29,7 @@ namespace ScannerProject
         // String of the file location which is used to let people log in
         public static string LoginFile { get; } = "Logins.lbs";
 
+        // Int for the default grace time in seconds
         public static int DefaultGraceTime { get; } = 30;
 
         /// <summary>
@@ -71,47 +72,74 @@ namespace ScannerProject
         /// <returns></returns>
         public static string[] ReadAllData(string fileName)
         {
-            //if (File.Exists(fileName)) return File.ReadAllLines(fileName);
-
-            //File.Create(fileName);
             return File.ReadAllLines(fileName);
         }
 
+        /// <summary>
+        /// Called when data is needed to be read form a file and stored in a string array,
+        /// ignores the first line of the file being read 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="ignoreFirstLine"></param>
+        /// <returns></returns>
         public static string[] ReadAllData(string fileName, bool ignoreFirstLine)
         {
             var data = File.ReadLines(fileName).ToList();
 
+            // Remove index 0
             if(ignoreFirstLine) data.RemoveAt(0);
 
+            // Return the list as an array
             return data.ToArray();
         }
 
+        /// <summary>
+        /// Read a line number from a file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="lineNumber"></param>
+        /// <returns></returns>
         public static string ReadLine(string fileName, int lineNumber)
         {
             var data = ReadAllData(fileName);
 
+            // If there is no data in the file, throw exception
             if(lineNumber > data.Length) throw new IndexOutOfRangeException(); 
 
             return data[lineNumber];
         }
 
+        /// <summary>
+        /// Called when the courses for the teacher are needed to be created
+        /// </summary>
+        /// <param name="courseNames"></param>
         public static void CreateCourses(string[] courseNames)
         {
+            // Add the .lbs extenstion to the strings since the files are just course codes + .lbs
             for (var i = 0; i < courseNames.Length; i++)
             {
                 courseNames[i] += ".lbs";
             }
 
+            // Foreach course code...
             foreach (var c in courseNames)
             {
+                // If the file we're trying to create is already there, continue
                 if (File.Exists(c)) continue;
   
+                // Create a new file
                 var myFile = File.Create(c);
 
+                // Set the first line to the default grace time
                 var firstLine = DefaultGraceTime;
+
+                // Close the flie
                 myFile.Close();
+
+                // Save all of the data to the file
                 SaveAllData(c, firstLine.ToString());
 
+                // Close the file
                 myFile.Close();
             }
         }
@@ -123,16 +151,21 @@ namespace ScannerProject
         /// <param name="listBox"></param>
         public static void LoadAllData(string[] data, ListBox listBox)
         {
+            // Iterator
             var i = 0;
 
+
+            // Foreach var in data...
             foreach (var s in data)
             {
+                // If the counter is 0, i.e the first line, add one to the counter and continue
                 if (i == 0)
                 {
                     i++;
                     continue;
                 }
 
+                // String builder with the current bit of data as the parameter
                 var strb = new StringBuilder(s);
 
                 data[i] = strb.ToString();
@@ -149,12 +182,14 @@ namespace ScannerProject
         /// <param name="data"></param>
         public static void SaveAllData(string fileName, string data)
         {
+            // If saving to a file that doesn't exist, create it
             if (!File.Exists(fileName)) File.Create(fileName);
 
             TextWriter writer = new StreamWriter(fileName, append: true);
 
             writer.WriteLine(data);
 
+            // Close stream
             writer.Close();
         }
 
@@ -176,14 +211,20 @@ namespace ScannerProject
             writer.Close();
         }
 
+        /// <summary>
+        /// Gets the input from the scanner 
+        /// </summary>
+        /// <param name="timer"></param>
+        /// <param name="textBox"></param>
         public static void GetScannerInput(Timer timer, TextBox textBox)
         {
-            if (timer.Enabled || textBox.Text.Length != 0) return;
-
-            textBox.Clear();
-            timer.Start();
+            
         }
 
+        /// <summary>
+        /// (Sam's method) Sends an email to a student
+        /// </summary>
+        /// <param name="std"></param>
         public static void SendMail(Student std)
         {
             try
@@ -212,7 +253,11 @@ namespace ScannerProject
                 MessageBox.Show(ex.ToString());
             }
         }
-
+        
+        /// <summary>
+        /// (Sam's method) Sends emails to students in a list
+        /// </summary>
+        /// <param name="students"></param>
         public static void SendMail(List<Student> students)
         {
             foreach (var s in students) SendMail(s);

@@ -17,11 +17,18 @@ namespace ScannerProject
         // Teacher object
         private readonly Teacher _teacher;
 
+        // Boolean that stores whether or not the teacher would like to automatically
+        // set students to late if they haven't reached class on time
         private bool _autoLate;
 
+        // Array of data for the class read from the file that coresponds with the
+        // course code of the current course
         private string[] _data;
 
+        // List of students as strings
         private List<string> _totalStudenList;
+
+        private string _barcode;
 
 #endregion
 
@@ -36,22 +43,39 @@ namespace ScannerProject
             // Assigns this.teacher the value of the teacher passed in
             _teacher = teacher;
 
+            // Set auto late to false, teacher checks a check box to change it to true
             _autoLate = false;
 
+            // Init list of students
             _totalStudenList = new List<string>();
 
             // Set the title of the MainForm
             Text += "Late Buster: Lobby | " + _teacher.Username;
 
+            _barcode = string.Empty;
+
+            textBox_Scanner.Hide();
+            textBox_Scanner.Focus();
+
+            // Set the current period to the returned value from a method
             CurrentPeriod = GetCurrentPeriod();
 
+            // Call method LoadInfo
             LoadInfo();
         }
 
+        /// <summary>
+        /// Loads data from a file into a string array and displays it to a listbox on screen
+        /// </summary>
         private void LoadInfo()
         {
+            // Read data from file
             _data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode);
+
+            // Add the names to a list
             _totalStudenList = _data.ToList();
+
+            // Load the data to a listbox
             DataManager.LoadAllData(_data, listBox_Pending);
         }
 
@@ -62,6 +86,9 @@ namespace ScannerProject
         /// <param name="e"></param>
         private void timer_Clock_Tick(object sender, EventArgs e)
         {
+            if (!textBox_Scanner.Focused) textBox_Scanner.Focus();
+            Console.Write(textBox_Scanner.Text);
+            // Set the current period
             CurrentPeriod = GetCurrentPeriod();
             
             // Set the course code label to the course that coresponds with the time
@@ -69,19 +96,35 @@ namespace ScannerProject
 
             // Update the clock
             l_Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
+        }
 
+        private void timer_Scanner_Tick(object sender, EventArgs e)
+        {
             
         }
 
+        /// <summary>
+        /// Called when a key is pressed on the main form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void f_MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // Didn't want to type e.keyChar each time
             var key = e.KeyChar;
+
+            // If the key is an integer key
             if (key >= 48 && key <= 57)
             {
-                //DataManager.GetScannerInput();
+                Console.WriteLine(key.ToString());
             }
         }
 
+        /// <summary>
+        /// Called to return the current period based on what time it is
+        /// Can also be forced into setting what period it is via changing code (DEBUGGING PURPOSES!)
+        /// </summary>
+        /// <returns></returns>
         private static int GetCurrentPeriod()
         {
             // Force a period to be returned despite time, use for debugging purposes
@@ -94,21 +137,38 @@ namespace ScannerProject
             if (DateTime.Now.CompareTo(DateTime.Parse("10:47:00 AM")) >= 0) return (int)DataManager.Period.Period3;
             if (DateTime.Now.CompareTo(DateTime.Parse("09:30:00 AM")) >= 0) return (int)DataManager.Period.Period2;
             if (DateTime.Now.CompareTo(DateTime.Parse("08:10:00 AM")) >= 0) return (int)DataManager.Period.Period1;
-            return 0;
+            return -1;
         }
 
+        /// <summary>
+        /// Called when the user clicks on the menu bar and clicks on the add or remove student option
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripMenuItem_AddOrRemoveStudent_Click(object sender, EventArgs e)
         {
+            // Create a new form and show it
             var form = new f_AddOrRemoveStudentForm(_teacher, _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod));
             form.Show();
         }
 
+        /// <summary>
+        /// Called when the user clicks on the menu bar and clicks on the grace time button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setGraceTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Create a new form and show it 
             var form = new f_GraceTime(_teacher.GraceTime, _teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod));
             form.Show();
         }
 
+        /// <summary>
+        /// If the check box value is changed, change the value of _autoLate to the value of the check box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBox_AutoLate_CheckedChanged(object sender, EventArgs e)
         {
             _autoLate = checkBox_AutoLate.Checked;

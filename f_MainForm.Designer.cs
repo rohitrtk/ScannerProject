@@ -46,6 +46,8 @@
             this.l_Late = new System.Windows.Forms.Label();
             this.checkBox_AutoLate = new System.Windows.Forms.CheckBox();
             this.l_LateTime = new System.Windows.Forms.Label();
+            this.timer_Scanner = new System.Windows.Forms.Timer(this.components);
+            this.textBox_Scanner = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,12 +196,24 @@
             this.l_LateTime.TabIndex = 24;
             this.l_LateTime.Text = "l_LateTime";
             // 
+            // timer_Scanner
+            // 
+            this.timer_Scanner.Tick += new System.EventHandler(this.timer_Scanner_Tick);
+            // 
+            // textBox_Scanner
+            // 
+            this.textBox_Scanner.Location = new System.Drawing.Point(447, 29);
+            this.textBox_Scanner.Name = "textBox_Scanner";
+            this.textBox_Scanner.Size = new System.Drawing.Size(10, 20);
+            this.textBox_Scanner.TabIndex = 25;
+            // 
             // f_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(763, 322);
+            this.Controls.Add(this.textBox_Scanner);
             this.Controls.Add(this.l_LateTime);
             this.Controls.Add(this.checkBox_AutoLate);
             this.Controls.Add(this.l_Late);
@@ -242,6 +256,8 @@
         private System.Windows.Forms.ToolStripMenuItem setGraceTimeToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox_AutoLate;
         private System.Windows.Forms.Label l_LateTime;
+        private System.Windows.Forms.Timer timer_Scanner;
+        private System.Windows.Forms.TextBox textBox_Scanner;
     }
 }
 
