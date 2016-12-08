@@ -135,7 +135,7 @@ namespace ScannerProject
                 str += "," + v;
             }
 
-            str += "," + _email;
+            str += "," + _email + "," + DataManager.DefaultGraceTime;
             
             // Call SaveAllData to write variables to a data file
             DataManager.SaveAllData(DataManager.LoginFile, str);

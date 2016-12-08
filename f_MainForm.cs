@@ -28,6 +28,20 @@ namespace ScannerProject
         // List of students as strings
         private List<string> _totalStudenList;
 
+        // Enum of the type of lists 
+        private enum ListType
+        {
+            Total,
+            Pending,
+            SignedIn,
+            Late,
+            Absent
+        }
+
+        // A list of list of students, total list of students, pending list of students, etc...
+        private List<List<Student>> _listOfStudents;
+
+        // String to hold the barcode of scanner
         private string _barcode;
 
 #endregion
@@ -46,16 +60,23 @@ namespace ScannerProject
             // Set auto late to false, teacher checks a check box to change it to true
             _autoLate = false;
 
+            // Init list of list of students
+            _listOfStudents = new List<List<Student>>();
+
             // Init list of students
             _totalStudenList = new List<string>();
 
             // Set the title of the MainForm
             Text += "Late Buster: Lobby | " + _teacher.Username;
 
+            // Set the barcode to an empty string
             _barcode = string.Empty;
 
-            textBox_Scanner.Hide();
+            // Focus the scanner textbox
             textBox_Scanner.Focus();
+
+            // Hide the scanner textbox
+            textBox_Scanner.Hide();
 
             // Set the current period to the returned value from a method
             CurrentPeriod = GetCurrentPeriod();
@@ -86,8 +107,9 @@ namespace ScannerProject
         /// <param name="e"></param>
         private void timer_Clock_Tick(object sender, EventArgs e)
         {
+            // If the scanner textbox isn't focuses, focus ////// REMOVE THIS
             if (!textBox_Scanner.Focused) textBox_Scanner.Focus();
-            Console.Write(textBox_Scanner.Text);
+            
             // Set the current period
             CurrentPeriod = GetCurrentPeriod();
             
@@ -98,9 +120,13 @@ namespace ScannerProject
             l_Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
         }
 
+        /// <summary>
+        /// This method is called every tick on the timer, timer used for scanner stuff
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer_Scanner_Tick(object sender, EventArgs e)
         {
-            
         }
 
         /// <summary>
@@ -108,7 +134,7 @@ namespace ScannerProject
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void f_MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        private void f_MainForm_KeyPress(object sender, KeyPressEventArgs e)    ///// REMOVE THIS?
         {
             // Didn't want to type e.keyChar each time
             var key = e.KeyChar;
