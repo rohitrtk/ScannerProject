@@ -176,6 +176,16 @@ namespace ScannerProject
         }
 
         /// <summary>
+        /// Called when a single string of data is needed to be loaded into a text box
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="listBox"></param>
+        public static void LoadStringOfData(string data, ListBox listBox)
+        {
+            listBox.Items.Add(data);
+        }
+
+        /// <summary>
         /// Called when a string of data is needed to be appended to a new line in a file 
         /// </summary>
         /// <param name="fileName"></param>

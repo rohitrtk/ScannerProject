@@ -26,7 +26,7 @@ namespace ScannerProject
         private string[] _data;
 
         // List of students as strings
-        private List<string> _totalStudenList;
+        private List<string> _totalStudentList;
 
         // Enum of the type of lists 
         private enum ListType
@@ -64,7 +64,7 @@ namespace ScannerProject
             _listOfStudents = new List<List<Student>>();
 
             // Init list of students
-            _totalStudenList = new List<string>();
+            _totalStudentList = new List<string>();
 
             // Set the title of the MainForm
             Text += "Late Buster: Lobby | " + _teacher.Username;
@@ -94,7 +94,7 @@ namespace ScannerProject
             _data = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode);
 
             // Add the names to a list
-            _totalStudenList = _data.ToList();
+            _totalStudentList = _data.ToList();
 
             // Load the data to a listbox
             DataManager.LoadAllData(_data, listBox_Pending);
@@ -198,6 +198,18 @@ namespace ScannerProject
         private void checkBox_AutoLate_CheckedChanged(object sender, EventArgs e)
         {
             _autoLate = checkBox_AutoLate.Checked;
+        }
+
+        public new void Refresh()
+        {
+            var data2 = DataManager.ReadAllData(_teacher.CourseManager.GetCourseAtPeriod(CurrentPeriod).CourseCode, true);
+            foreach (var v in data2)
+            {
+                if (_data.Contains(v)) continue;
+
+                _totalStudentList.Add(v);
+                DataManager.LoadStringOfData(v, listBox_Pending);
+            }
         }
     }
 }

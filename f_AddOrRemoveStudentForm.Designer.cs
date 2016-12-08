@@ -1,4 +1,6 @@
-﻿namespace ScannerProject
+﻿using System.Windows.Forms;
+
+namespace ScannerProject
 {
     partial class f_AddOrRemoveStudentForm
     {
@@ -36,6 +38,8 @@
             this.textBox_AddStudent = new System.Windows.Forms.TextBox();
             this.button_AddStudent = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            //this.Form1_FormClosed += new FormClosedEventHandler(Form1_FormClosed);
+
             // 
             // listBox_StudentsInClass
             // 
@@ -108,5 +112,7 @@
         private System.Windows.Forms.Timer timer_Scanner;
         private System.Windows.Forms.TextBox textBox_AddStudent;
         private System.Windows.Forms.Button button_AddStudent;
+
+        public object Form1_FormClosed { get; private set; }
     }
 }
